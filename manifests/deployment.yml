@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: shuklaj1azurevotingappredis 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shuklaj1azurevotingappredis 
+    spec:
+      containers:
+        - name: shuklaj1azurevotingappredis 
+          image: sanimages.azurecr.io/shuklaj1azurevotingappredis
+          ports:
+          - containerPort: 80
