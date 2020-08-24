@@ -51,7 +51,7 @@ stages:
       steps:
       - task: KubernetesManifest@0
         inputs:
-        kubernetesServiceConnection: 'ss-aks17-vote-new'
-        namespace: 'vote-new'
-        manifests: 'azure-vote-all-in-one-redis.yaml'
-        containers: 'shuklajazurevotingappredis'
+          kubernetesServiceConnection: 'ss-aks17-vote-new'
+          namespace: 'vote-new'
+          manifests: 'azure-vote-all-in-one-redis.yaml'
+          containers: 'shuklajazurevotingappredis'
