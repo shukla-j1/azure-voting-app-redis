@@ -44,7 +44,11 @@ stages:
        TargetFolder: '$(build.artifactstagingdirectory)'
 
 
-stage:Deploy
+- stage: Deploy
+  displayName: deploy
+  jobs:
+    - jobL deploy
+steps:
 - task: KubernetesManifest@0
   inputs:
     action: 'deploy'
