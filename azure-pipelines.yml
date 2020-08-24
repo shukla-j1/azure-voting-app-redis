@@ -44,6 +44,7 @@ stages:
        TargetFolder: '$(build.artifactstagingdirectory)'
 
 
+stage:Deploy
 - task: KubernetesManifest@0
   inputs:
     action: 'deploy'
