@@ -37,14 +37,16 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-  - task: CopyFiles@2
-    inputs:
-    SourceFolder: 'C:\Users\sanjay\git-work\azure-voting-app-redis'
-    Contents: 'azure-vote-all-in-one-redis.yaml'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-  - task: KubernetesManifest@0
-    inputs:
+    - task: CopyFiles@2 
+      inputs:
+       SourceFolder: 'C:\Users\sanjay\git-work\azure-voting-app-redis'
+       Contents: 'azure-vote-all-in-one-redis.yaml'
+      TargetFolder: '$(build.artifactstagingdirectory)'
+- stage: Deploy
+- task: KubernetesManifest@0
+  inputs:
     action: 'deploy'
     kubernetesServiceConnection: 'ss-aks17-vote-new'
     namespace: 'vote-new'
-    manifests: 'azure-vote-all-in-one-redis'
+    manifests: 'azure-vote-all-in-one-redis.yaml'
+    containers: 'shuklajazurevotingappredis'
