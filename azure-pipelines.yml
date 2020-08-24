@@ -47,9 +47,9 @@ stages:
 - stage: Deploy
   displayName: deploy
   jobs:
-    - jobL deploy
-steps:
-- task: KubernetesManifest@0
+    - job: deploy
+      steps:
+      - task: KubernetesManifest@0
   inputs:
     action: 'deploy'
     kubernetesServiceConnection: 'ss-aks17-vote-new'
