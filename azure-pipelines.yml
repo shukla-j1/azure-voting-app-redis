@@ -50,9 +50,8 @@ stages:
     - job: deploy
       steps:
       - task: KubernetesManifest@0
-  inputs:
-    action: 'deploy'
-    kubernetesServiceConnection: 'ss-aks17-vote-new'
-    namespace: 'vote-new'
-    manifests: 'azure-vote-all-in-one-redis.yaml'
-    containers: 'shuklajazurevotingappredis'
+        inputs:
+        kubernetesServiceConnection: 'ss-aks17-vote-new'
+        namespace: 'vote-new'
+        manifests: 'azure-vote-all-in-one-redis.yaml'
+        containers: 'shuklajazurevotingappredis'
