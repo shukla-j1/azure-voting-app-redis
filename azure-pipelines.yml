@@ -41,7 +41,7 @@ stages:
       inputs:
        SourceFolder: 'C:\Users\sanjay\git-work\azure-voting-app-redis'
        Contents: 'azure-vote-all-in-one-redis.yaml'
-      TargetFolder: '$(build.artifactstagingdirectory)'
+       TargetFolder: '$(build.artifactstagingdirectory)'
 - stage: Deploy
 - task: KubernetesManifest@0
   inputs:
