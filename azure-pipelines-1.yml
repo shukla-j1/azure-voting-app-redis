@@ -40,14 +40,7 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-          - task: PublishPipelineArtifact@1
-            inputs:
-              targetPath: '$(Pipeline.Workspace)'
-              artifact: '*.yaml'
-              publishLocation: 'pipeline'
-
-
-          
+                   
     - upload: manifests
       artifact: manifests
 
@@ -71,7 +64,7 @@ stages:
               buildType: 'current'
               downloadType: 'single'
               artifactName: '*.yaml'
-              downloadPath: '$(System.ArtifactsDirectory)/manifests'
+              downloadPath: '$(Pipeline.Workspace)/manifests'
           
           
 
@@ -87,8 +80,8 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $System.ArtifactsDirectory)/manifests/deployment.yml
-                $(System.ArtifactsDirectory)/manifests/service.yml
+                $(Pipeline.Workspace)/manifests/deployment.yml
+                $(Pipeline.Workspace)/manifests/service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
