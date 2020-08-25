@@ -63,7 +63,7 @@ stages:
             inputs:
               buildType: 'current'
               downloadType: 'single'
-              artifactName: '*.yaml'
+              artifactName: '*.yml'
               downloadPath: '$(Pipeline.Workspace)/manifests'
           
           
