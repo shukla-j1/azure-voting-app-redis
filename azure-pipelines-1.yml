@@ -59,12 +59,13 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: CopyFiles@2
+          - task: DownloadBuildArtifacts@0
             inputs:
-              SourceFolder: 'C:\Users\sanjay\git-work\azure-voting-app-redis'
-              Contents: '*.yaml'
-              TargetFolder: '$(Pipeline.Workspace)/manifests'
-
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: '*.yaml'
+              downloadPath: '$(Pipeline.Workspace)/manifests'
+          
           
 
           - task: KubernetesManifest@0
