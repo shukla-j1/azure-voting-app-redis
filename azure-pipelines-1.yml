@@ -59,6 +59,11 @@ stages:
       runOnce:
         deploy:
           steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              artifactName: 'manifests'
+              downloadPath: '$(Pipeline.Workspace)/manifests'
+
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
