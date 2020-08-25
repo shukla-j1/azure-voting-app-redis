@@ -40,6 +40,13 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: '$(Pipeline.Workspace)'
+              artifact: '*.yaml'
+              publishLocation: 'pipeline'
+
+
           
     - upload: manifests
       artifact: manifests
