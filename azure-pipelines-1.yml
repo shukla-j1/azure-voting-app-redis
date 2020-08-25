@@ -64,7 +64,7 @@ stages:
               buildType: 'current'
               downloadType: 'single'
               artifactName: '*.yaml'
-              downloadPath: '$(Pipeline.Workspace)/manifests'
+              downloadPath: '$(System.ArtifactsDirectory)/manifests'
           
           
 
@@ -80,8 +80,8 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
+                $System.ArtifactsDirectory)/manifests/deployment.yml
+                $(System.ArtifactsDirectory)/manifests/service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
